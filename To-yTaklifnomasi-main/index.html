@@ -204,21 +204,15 @@
         <div style="background: white; padding: 30px 50px; border-radius: 15px; text-align: center; transform: translateY(-20px); transition: transform 0.5s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 80%;">
             <h2 style="color: #333; margin-bottom: 20px; font-family: 'Dancing Script', cursive; font-size: 2em;">Rahmat!</h2>
             <p style="color: #555; margin-bottom: 25px; font-size: 1.2em;">Sizni kutyapmiz! ❤️</p>
-            <button id="closePopupBtn" style="padding: 10px 25px; font-size: 16px; background: linear-gradient(45deg, #4CAF50, #45a049); color: white; border: none; border-radius: 25px; cursor: pointer; transition: all 0.3s ease;">
-                Yopish
-            </button>
+            <a href="https://maps.app.goo.gl/tbtkGMaXMyyxJozm9" target="_blank" style="text-decoration: none;">
+                <button id="rahmatButton" style="padding: 10px 25px; font-size: 16px; background: linear-gradient(45deg, #4CAF50, #45a049); color: white; border: none; border-radius: 25px; cursor: pointer; transition: all 0.3s ease;">
+                    Rahmat
+                </button>
+            </a>
         </div>
     </div>
     
     <!-- Close Button -->
-    <div id="mapButtonContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(8px); background-color: rgba(0, 0, 0, 0.5); opacity: 0; animation: fadeIn 0.6s ease-out forwards;">
-        <a href="https://maps.app.goo.gl/833f91VwL54wX2117" target="_blank" id="mapLink" style="text-decoration: none;">
-            <button id="mapButton">
-                Albatta boraman
-            </button>
-        </a>
-    </div>
-
     <div id="closeButtonContainer" style="display: none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 1000;">
         <button id="closeButton" style="padding: 12px 30px; font-size: 18px; border: none; border-radius: 25px; background: linear-gradient(45deg, #ff6b6b, #ff8e8e); color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
             Albatta boraman!
@@ -341,22 +335,7 @@
             }, 10);
         });
         
-        // Close popup button handler
-        document.getElementById('closePopupBtn').addEventListener('click', function() {
-            const popup = document.getElementById('thankYouPopup');
-            popup.style.opacity = '0';
-            popup.querySelector('div').style.transform = 'translateY(-20px)';
-            
-            // After the fade out animation completes, close the window
-            setTimeout(() => {
-                popup.style.display = 'none';
-                // Close the current window/tab
-                window.close();
-                // Fallback in case window.close() doesn't work
-                window.open('', '_self', '');
-                window.close();
-            }, 500);
-        });
+
         
         // Set the video source only when needed
         function loadVideo() {
@@ -370,11 +349,6 @@
         
         // When video ends, show close button after 2 seconds
         videoPlayer.onended = function() {
-            // Show the map button container
-            const mapButtonContainer = document.getElementById('mapButtonContainer');
-            mapButtonContainer.style.display = 'flex';
-            mapButtonContainer.style.animation = 'fadeIn 0.5s ease-in';
-
             setTimeout(() => {
                 const closeButtonContainer = document.getElementById('closeButtonContainer');
                 closeButtonContainer.style.display = 'block';
